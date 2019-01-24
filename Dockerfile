@@ -11,4 +11,5 @@ RUN apt-get update ; apt-get install -y --no-install-recommends ca-certificates 
     sed -i 's@ .*.ubuntu.com@ https://mirrors.ustc.edu.cn@g' /etc/apt/sources.list ;\
     apt-get clean  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
     
- 
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
