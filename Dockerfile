@@ -15,7 +15,7 @@ RUN apt-get update ; apt-get install -y --no-install-recommends ca-certificates 
     mkdir -p /etc/service/cron /etc/service/logrotate /etc/service/syslog ;\
     bash -c 'echo -e "#!/bin/bash\nexec /usr/sbin/rsyslogd -n" > /etc/service/syslog/run' ;\
     bash -c 'echo -e "#!/bin/bash\nexec /usr/sbin/cron -f" > /etc/service/cron/run' ;\
-    chmod 755 /etc/service/cron/run /etc/service/syslog/run 
+    chmod 755 /etc/service/cron/run /etc/service/syslog/run ;\
     apt-get clean  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 # ENTRYPOINT ["runsvdir", "/etc/service"]
