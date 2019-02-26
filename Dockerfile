@@ -12,7 +12,7 @@ RUN apt-get update ; apt-get install -y --no-install-recommends ca-certificates 
     sed -i 's@ .*.ubuntu.com@ https://mirrors.ustc.edu.cn@g' /etc/apt/sources.list ;\
     sed -i '/session    required     pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/cron ;\
     sed -i 's/^module(load="imklog"/#module(load="imklog"/g' /etc/rsyslog.conf ;\
-    mkdir -p /etc/service/cron /etc/service/logrotate /etc/service/syslog ;\
+    mkdir -p /etc/service/cron /etc/service/syslog ;\
     bash -c 'echo -e "#!/bin/bash\nexec /usr/sbin/rsyslogd -n" > /etc/service/syslog/run' ;\
     bash -c 'echo -e "#!/bin/bash\nexec /usr/sbin/cron -f" > /etc/service/cron/run' ;\
     chmod 755 /etc/service/cron/run /etc/service/syslog/run ;\
